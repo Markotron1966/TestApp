@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterNameTextField: UITextField!
     @IBOutlet weak var enterMessageTextField: UITextField!
     @IBOutlet weak var mailButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -27,17 +28,29 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendMailButtonPressed(sender: UIButton) {
-        // Send Mail button functionality
+        // change message label text and unhide
         messageLabel.text = enterMessageTextField.text
         messageLabel.hidden = false
         messageLabel.textColor = UIColor.orangeColor()
+        
+        // change name text label and unhide
+        nameLabel.text = "From: " + enterNameTextField.text
+        nameLabel.hidden = false
+        nameLabel.textColor = UIColor.blueColor()
+        nameLabel.backgroundColor = UIColor.greenColor()
+        
         // Change the button
         mailButton.backgroundColor = UIColor.redColor()
         mailButton.setTitle("Mail Sent", forState: UIControlState.Normal)
         mailButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         
+        // change the enter message text field
         enterMessageTextField.text = ""
         enterMessageTextField.resignFirstResponder()
+        
+        // change the enter name text field
+        enterNameTextField.text = ""
+        enterNameTextField.resignFirstResponder()
     }
 
 }
